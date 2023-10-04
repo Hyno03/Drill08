@@ -20,7 +20,8 @@ class smallBall():
         self.image.draw(self.x, self.y)
 
     def update(self):
-        pass
+        if self.y >= 69:
+            self.y -= 10
 
 class bigBall():
     def __init__(self):
@@ -31,7 +32,8 @@ class bigBall():
         self.image.draw(self.x, self.y)
 
     def update(self):
-        pass
+        if self.y >= 79:
+            self.y -= 10
 
 def handle_events():
     global running
