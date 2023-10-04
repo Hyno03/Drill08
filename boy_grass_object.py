@@ -1,27 +1,31 @@
 from pico2d import *
 import random
 
+
 # Game object class here
 class Grass():
     def __init__(self):
         self.image = load_image('grass.png')
 
     def draw(self):
-        self.image.draw(400,30)
+        self.image.draw(400, 30)
 
     def update(self):
         pass
+
+
 class smallBall():
     def __init__(self):
         self.image = load_image('ball21x21.png')
-        self.x, self.y = random.randint(10,790), 599
+        self.x, self.y = random.randint(10, 790), 599
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def update(self):
         if self.y >= 69:
-            self.y -= random.randint(1,20)
+            self.y -= random.randint(1, 20)
+
 
 class bigBall():
     def __init__(self):
@@ -33,7 +37,8 @@ class bigBall():
 
     def update(self):
         if self.y >= 79:
-            self.y -= random.randint(1,20)
+            self.y -= random.randint(1, 20)
+
 
 def handle_events():
     global running
@@ -44,28 +49,38 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
 
+
 def reset_world():
     global running
     global grass
     global balls
+    global world
 
     running = True
+    world = []
+
     grass = Grass()
+    world.append(grass)
+
     balls = [smallBall() for i in range(10)] + [bigBall() for i in range(10)]
+    world += balls
     pass
+
 
 def update_world():
     grass.update()
-    for ball in balls:
-        ball.update()
+    for o in world:
+        o.update()
+
 
 def render_world():
     clear_canvas()
     grass.draw()
-    for ball in balls:
-        ball.draw()
+    for o in world:
+        o.draw()
     update_canvas()
     pass
+
 
 open_canvas()
 
