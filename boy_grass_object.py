@@ -1,6 +1,15 @@
 from pico2d import *
 
 # Game object class here
+class Grass():
+    def __init__(self):
+        self.image = load_image('grass.png')
+
+    def draw(self):
+        self.image.draw(400,30)
+
+    def update(self):
+        pass
 class smallBall():
     def __init__(self):
         self.image = load_image('ball21x21.png')
@@ -32,20 +41,24 @@ def handle_events():
 
 def reset_world():
     global running
+    global grass
     global sb
     global bb
 
     running = True
+    grass = Grass()
     sb = smallBall()
     bb = bigBall()
     pass
 
 def update_world():
+    grass.update()
     sb.update()
     bb.update()
 
 def render_world():
     clear_canvas()
+    grass.draw()
     sb.draw()
     bb.draw()
     update_canvas()
