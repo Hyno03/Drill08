@@ -2,10 +2,24 @@ from pico2d import *
 
 # Game object class here
 class smallBall():
-    pass
+    def __init__(self):
+        self.image = load_image('ball21x21.png')
+
+    def draw(self):
+        self.image.draw(100,100)
+
+    def update(self):
+        pass
 
 class bigBall():
-    pass
+    def __init__(self):
+        self.image = load_image('ball41x41.png')
+
+    def draw(self):
+        self.image.draw(200, 200)
+
+    def update(self):
+        pass
 
 def handle_events():
     global running
@@ -18,15 +32,23 @@ def handle_events():
 
 def reset_world():
     global running
+    global sb
+    global bb
+
     running = True
+    sb = smallBall()
+    bb = bigBall()
     pass
 
 def update_world():
-    pass
+    sb.update()
+    bb.update()
 
 def render_world():
     clear_canvas()
-    update_world()
+    sb.draw()
+    bb.draw()
+    update_canvas()
     pass
 
 open_canvas()
