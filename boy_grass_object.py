@@ -47,25 +47,23 @@ def handle_events():
 def reset_world():
     global running
     global grass
-    global sb
-    global bb
+    global balls
 
     running = True
     grass = Grass()
-    sb = smallBall()
-    bb = bigBall()
+    balls = [smallBall() for i in range(10)] + [bigBall() for i in range(10)]
     pass
 
 def update_world():
     grass.update()
-    sb.update()
-    bb.update()
+    for ball in balls:
+        ball.update()
 
 def render_world():
     clear_canvas()
     grass.draw()
-    sb.draw()
-    bb.draw()
+    for ball in balls:
+        ball.draw()
     update_canvas()
     pass
 
