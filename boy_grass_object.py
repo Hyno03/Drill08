@@ -14,26 +14,26 @@ class Grass():
 class smallBall():
     def __init__(self):
         self.image = load_image('ball21x21.png')
-        self.x, self.y = random.randint(100,700), 599
+        self.x, self.y = random.randint(10,790), 599
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def update(self):
         if self.y >= 69:
-            self.y -= 10
+            self.y -= random.randint(1,20)
 
 class bigBall():
     def __init__(self):
         self.image = load_image('ball41x41.png')
-        self.x, self.y = random.randint(100, 700), 599
+        self.x, self.y = random.randint(10, 790), 599
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def update(self):
         if self.y >= 79:
-            self.y -= 10
+            self.y -= random.randint(1,20)
 
 def handle_events():
     global running
