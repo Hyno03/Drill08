@@ -1,4 +1,5 @@
 from pico2d import *
+import random
 
 # Game object class here
 class Grass():
@@ -13,9 +14,10 @@ class Grass():
 class smallBall():
     def __init__(self):
         self.image = load_image('ball21x21.png')
+        self.x, self.y = random.randint(100,700), 599
 
     def draw(self):
-        self.image.draw(100,100)
+        self.image.draw(self.x, self.y)
 
     def update(self):
         pass
@@ -23,9 +25,10 @@ class smallBall():
 class bigBall():
     def __init__(self):
         self.image = load_image('ball41x41.png')
+        self.x, self.y = random.randint(100, 700), 599
 
     def draw(self):
-        self.image.draw(200, 200)
+        self.image.draw(self.x, self.y)
 
     def update(self):
         pass
