@@ -1,7 +1,10 @@
 from pico2d import *
 
 # Game object class here
-class Ball():
+class smallBall():
+    pass
+
+class bigBall():
     pass
 
 def handle_events():
@@ -14,12 +17,16 @@ def handle_events():
             running = False
 
 def reset_world():
+    global running
+    running = True
     pass
 
 def update_world():
     pass
 
 def render_world():
+    clear_canvas()
+    update_world()
     pass
 
 open_canvas()
